@@ -1,0 +1,230 @@
+<div *ngIf="!details">
+    <div class="card" style="width: 50rem;">
+        <div class="progres">
+            <div class="progress" style="height: 20px;">
+                <div class="progress-bar" role="progressbar" style="width: 33%;" aria-valuenow="25" aria-valuemin="0"
+                    aria-valuemax="100"></div>
+            </div>
+        </div>
+        <div class="card-body-center    ">
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    New Match
+                </div>
+            </nav>
+            <br>
+            <div class="tab-content" id="nav-tabContent">
+                <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <div *ngIf="form.get('team1')?.invalid && form.get('team1')?.touched"
+                            class="text-danger fade-in">
+                            Please enter Team 2 Details
+                        </div>
+                        <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Team1</span>
+                            <input type="text" class="form-control" aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-sm" formControlName="team1">
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <div *ngIf="form.get('team2')?.invalid && form.get('team2')?.touched"
+                            class="text-danger fade-in">
+                            Please enter Team 2 Details
+                        </div>
+                        <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Team2</span>
+                            <input type="text" class="form-control" aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-sm" formControlName="team2">
+                        </div>
+                    </div>
+
+                    <div>
+                        <div *ngIf="form.get('toss')?.invalid && form.get('toss')?.touched" class="text-danger fade-in">
+                            Please Select Winner of the Toss
+                        </div>
+                        <div class="input-group input-group-sm mb-3">
+                            <label class="input-group-text" for="inputGroupSelect01">_Toss</label>
+                            <select class="form-select" id="inputGroupSelect01" formControlName="toss">
+                                <option value="{{this.form.get('team1')?.value}}">{{this.form.get('team1')?.value}}
+                                </option>
+                                <option value="{{this.form.get('team1')?.value}}">{{this.form.get('team2')?.value}}
+                                </option>
+                            </select>
+                        </div>
+
+                    </div>
+
+
+                    <div>
+                        <div *ngIf="form.get('chooseTo')?.invalid && form.get('chooseTo')?.touched"
+                            class="text-danger fade-in">
+                            please Choose
+                        </div>
+
+                        <div class="input-group input-group-sm mb-3">
+                            <label class="input-group-text" for="inputGroupSelect01">Choose To</label>
+                            <select class="form-select" id="inputGroupSelect01" formControlName="chooseTo">
+                                <option value="Bat">Bat</option>
+                                <option value="Bowl">Bowl</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div>
+                        <div *ngIf="form.get('overs')?.invalid && form.get('overs')?.touched"
+                            class="text-danger fade-in">
+                            Overs field is required.
+                        </div>
+                        <div class="input-group input-group-sm mb-3">
+                            <label class="input-group-text" for="inputGroupSelect01">Overs</label>
+                            <select class="form-select" id="inputGroupSelect01" formControlName="overs">
+                                <option *ngFor="let over of overs" value={{over}}>{{over}}</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <div *ngIf="form.get('ground')?.invalid && form.get('ground')?.touched"
+                            class="text-danger fade-in">
+                            A Ground field is required.
+                        </div>
+                        <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Ground</span>
+                            <input type="text" class="form-control" aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-sm" formControlName="ground">
+                        </div>
+                    </div>
+                </form>
+                <button type="button" class="btn btn-success" [disabled]="!form.valid"
+                    (click)="playerListFun()">Next</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf="!playerListDiv">
+    <div class="card" style="width: 50rem;">
+        <div class="progres">
+            <div class="progress" style="height: 20px;">
+                <div class="progress-bar" role="progressbar" style="width: 66%;" aria-valuenow="25" aria-valuemin="0"
+                    aria-valuemax="100"></div>
+            </div>
+        </div>
+        <div class="card-body">
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    Player Details
+                </div>
+            </nav>
+            <br>
+            <div class="tab-content" id="nav-tabContent2">
+
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Player Name</th>
+                                <th>Player Position</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let player of team1players;let i = index; ">
+                                <td>{{ i + 1 }}</td>
+                                <td>
+
+                                    <div class="input-group input-group-sm mb-2">
+                                        <input type="text" class="form-control" id="playerName{{ i }}"
+                                            name="playerName{{ i }}" [(ngModel)]="player.team1name" required>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="input-group input-group-sm mb-2">
+                                        <input type="text" class="form-control" id="playerPosition{{ i }}"
+                                            name="playerPosition{{ i }}" [(ngModel)]="player.team2name" required>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button type="button" class="btn btn-success" (click)="selectPlayer()">Next</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="select">
+    <div class="card" style="width: 50rem;">
+        <div class="progres">
+            <div class="progress" style="height: 20px;">
+                <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="25" aria-valuemin="0"
+                    aria-valuemax="100"></div>
+            </div>
+        </div>
+        <div class="card-body-center    ">
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    Select Players
+                </div>
+            </nav>
+            <br>
+            <div class="tab-content" id="nav-tabContent">
+
+
+                <form [formGroup]="selectPlayersForm" (ngSubmit)="onSubmit()">
+
+                    <div>
+                        <div *ngIf="selectPlayersForm.get('on_StrikeBatsMan')?.invalid && selectPlayersForm.get('on_StrikeBatsMan')?.touched"
+                            class="text-danger fade-in">
+                            Please Select On-Strike Batsman
+                        </div>
+                        <div class="input-group input-group-sm mb-3">
+
+                            <label class="input-group-text" for="inputGroupSelect01">On-Strike BatsMan</label>
+                            <select class="form-select" id="inputGroupSelect01" formControlName="on_StrikeBatsMan" >
+                                <option selected disabled>Select on-strike BatsMan</option>
+                                <option *ngFor="let list of batsManList" value="{{list}}">{{list.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div *ngIf="selectPlayersForm.get('Non_StrikeBatsMan')?.invalid && selectPlayersForm.get('Non_StrikeBatsMan')?.touched"
+                            class="text-danger fade-in">
+                            Please Select Non-Strike Batsman
+                        </div>
+                        <div class="input-group input-group-sm mb-3">
+                            <label class="input-group-text" for="inputGroupSelect01">Non-Strike Batsman</label>
+                            <select class="form-select" id="inputGroupSelect01" formControlName="Non_StrikeBatsMan">
+                                <option selected disabled>Select Non-strike BatsMan</option>
+                                <option *ngFor="let list of batsManList" value="{{list}}">{{list.name}}</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div>
+                        <div *ngIf="selectPlayersForm.get('bowler')?.invalid && selectPlayersForm.get('bowler')?.touched"
+                            class="text-danger fade-in">
+                            Please Select bowler
+                        </div>
+                        <div class="input-group input-group-sm mb-3">
+                            <label class="input-group-text" for="inputGroupSelect01">Select Bowler</label>
+                            <select class="form-select" id="inputGroupSelect01" formControlName="bowler">
+                                <option selected disabled>Select Bowler</option>
+                                <option *ngFor="let list of bowlerList" value="{{list}}">{{list.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+                <button type="button" [disabled]="!selectPlayersForm.valid" class="btn btn-success" (click)="startMatch()">Start Match</button>
+            </div>
+        </div>
+
+    </div>
+</div>

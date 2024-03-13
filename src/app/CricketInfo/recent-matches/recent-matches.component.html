@@ -1,0 +1,28 @@
+<div>
+    <div class="listOfMatches">
+        <div class="card" style="width: 38rem;" *ngFor="let a of matches">
+            <div class="card-body">
+                <h6>{{a?.matchInfo.matchDesc}}.{{a?.matchInfo.seriesName}}</h6>
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>{{a?.matchInfo?.team1?.teamName}}:</td>
+                            <td>{{a?.matchScore?.team1Score?.inngs1?.runs}}/{{a?.matchScore?.team1Score?.inngs1?.wickets}}({{a?.matchScore?.team1Score?.inngs1?.overs}})</td>
+                            <td *ngIf="a?.matchInfo.matchFormat==='TEST' ">{{a?.matchScore?.team1Score?.inngs2?.runs}}/{{a?.matchScore?.team1Score?.inngs2?.wickets}}({{a?.matchScore?.team1Score?.inngs2?.overs}})</td>
+                            
+                        </tr>
+                        <tr >
+                            <td>{{a?.matchInfo?.team2?.teamName}}:</td>
+                            <td>{{a?.matchScore?.team2Score?.inngs1?.runs}}/{{a?.matchScore?.team2Score?.inngs1?.wickets}}({{a?.matchScore?.team2Score?.inngs1?.overs}})</td>
+                            <td *ngIf="a?.matchInfo.matchFormat==='TEST'">{{a?.matchScore?.team2Score?.inngs2?.runs}}/{{a?.matchScore?.team2Score?.inngs2?.wickets}}({{a?.matchScore?.team2Score?.inngs2?.overs}})</td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+                <h6>{{a?.matchInfo?.status}}</h6>
+            </div>
+        </div>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

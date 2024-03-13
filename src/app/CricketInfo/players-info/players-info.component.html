@@ -1,0 +1,146 @@
+
+
+<div>
+    <button class="btn btn-success" (click)="back()">back</button>
+    
+    <h1>{{playerInfo.name}} <h3>({{playerInfo.intlTeam}})</h3></h1>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <h3>Personal Info</h3>
+
+                    <table class="table">
+                
+                        <tbody>
+                          <tr>
+                            <td>Born</td>
+                            <td>{{playerInfo.DoBFormat}}</td>
+                          </tr>
+                          <tr>
+                            <td>Birth Placr</td>
+                            <td>{{playerInfo.birthPlace}}</td>
+                          </tr>
+                          <tr>
+                            <td>Height</td>
+                            <td>{{playerInfo.height}}</td>
+                          </tr>
+                          <tr>
+                            <td>Role</td>
+                            <td>{{playerInfo.role}}</td>
+                          </tr>
+                          <tr>
+                            <td>Batting Style</td>
+                            <td>{{playerInfo.bat}}</td>
+                          </tr>
+                          <tr>
+                            <td>Height</td>
+                            <td>{{playerInfo.bowl}}</td>
+                          </tr>
+                          
+                        </tbody>
+                      </table>        
+                </div>
+              </div>
+            
+              <div class="card">
+                <div class="card-body">
+                    <h3>Rankings</h3>
+                    <table class="table">
+                      <thead>
+                          <th></th>
+                          <th>ODI</th>
+                          <th>T20I</th>
+                          <th>Test</th>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Batting</td>
+                          <td>{{playerInfo.rankings.bat.testBestRank}}</td>
+                          <td>{{playerInfo.rankings.bat.odiBestRank}}</td>
+                          <td>{{playerInfo.rankings.bat.t20BestRank}}</td>
+      
+                        </tr>
+                        <tr>
+                          <td>Bowling</td>
+                          <td>{{playerInfo.rankings.bowl.testBestRank}}</td>
+                          <td>{{playerInfo.rankings.bowl.testBestRank}}</td>
+                          <td>{{playerInfo.rankings.bowl.testBestRank}}</td>
+                        </tr>
+                        
+                      </tbody>
+                    </table>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-body">
+                    <h3>Bio</h3>
+                    <p>{{playerInfo.bio}}</p>
+                </div>
+              </div>
+              
+              
+        </div>
+        <div class="col-sm-8">
+
+            <div class="card">
+                <div class="card-body">
+                    <h3>Batting Carrer Summary</h3>
+                    <table class="table">
+                        <tbody>
+                            <!-- Loop through the values array -->
+                            <tr *ngFor="let item of battingStats.values">
+                              <td>{{ item.values[0] }}</td>
+                              <td>{{ item.values[1] }}</td>
+                              <td>{{ item.values[2] }}</td>
+                              <td>{{ item.values[3] }}</td>
+                              <td>{{ item.values[4] }}</td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                          <tr>
+                            <th scope="col">Metric</th>
+                            <th scope="col">Test</th>
+                            <th scope="col">ODI</th>
+                            <th scope="col">T20</th>
+                            <th scope="col">IPL</th>
+                          </tr>
+                        </thead>
+                        
+                      </table>
+                </div>
+              </div>
+            
+              <div class="card">
+                <div class="card-body">
+                    <h3>Bowling Carrer Summary</h3>
+                    <table class="table">
+                        <tbody>
+                            <!-- Loop through the values array -->
+                            <tr *ngFor="let item of bowling.values">
+                              <td>{{ item.values[0] }}</td>
+                              <td>{{ item.values[1] }}</td>
+                              <td>{{ item.values[2] }}</td>
+                              <td>{{ item.values[3] }}</td>
+                              <td>{{ item.values[4] }}</td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                          <tr>
+                            <th scope="col">Metric</th>
+                            <th scope="col">Test</th>
+                            <th scope="col">ODI</th>
+                            <th scope="col">T20</th>
+                            <th scope="col">IPL</th>
+                          </tr>
+                        </thead>
+                        
+                      </table>
+                </div>
+              </div>
+
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>

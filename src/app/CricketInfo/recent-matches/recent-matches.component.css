@@ -1,0 +1,80 @@
+.listOfMatches {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 25px;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.card {
+    flex-basis: calc(33.333% - 20px); 
+    margin-bottom: 20px; 
+}
+
+/* Media query for smaller screens */
+@media (max-width: 767px) {
+    .card {
+        flex-basis: calc(50% - 20px); /* Two cards per line on smaller screens */
+    }
+}
+
+/* Media query for even smaller screens */
+@media (max-width: 479px) {
+    .card {
+        flex-basis: 100%; /* One card per line on even smaller screens */
+    }
+}
+
+.items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 25px;
+  }
+
+  h2 {
+    border-bottom: 3px solid red;
+  }
+
+  /* Optional styles for better spacing */
+  body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+  }
+
+  .card-body {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+  }
+  
+  .card-body h6 {
+    margin: 0;
+    font-size: small;
+    
+  }
+  
+  .card-body h6:not(:last-child) {
+    margin-bottom: 8px;
+  }
+  
+  /* Optional: Add styles for different sections */
+  .card-body .match-info {
+    color: #3498db;
+  }
+  
+  .card-body .team1-info {
+    color: #2ecc71;
+  }
+  
+  .card-body .team2-info {
+    color: #e74c3c;
+  }
+  
+  .card-body .status-info {
+    color: #f39c12;
+  }
+  

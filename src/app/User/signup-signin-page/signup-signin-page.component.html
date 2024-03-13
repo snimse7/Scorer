@@ -1,0 +1,91 @@
+
+<div *ngIf="loginPage">
+  <app-header></app-header>
+  <div class="card" style="width: 38rem;" >
+    <div class="card-body-center    ">
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+              <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">SignIn</button>
+              <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">SignUp</button>
+            </div>
+          </nav>
+        <br>
+
+          <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <form [formGroup]="signIn" (ngSubmit)="onSub()">
+                    <div *ngIf="signIn.get('username')?.invalid && signIn.get('username')?.touched" class="text-danger fade-in">
+                        Username is required.
+                      </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
+                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" formControlName="userName">
+                    </div>
+    
+                    <div *ngIf="signIn.get('passWord')?.invalid && profileForm.get('password')?.touched" class="text-danger fade-in">
+                        Password is required (minimum 8 characters).
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="bi bi-lock"></i></span>
+                        <input type="password" class="form-control" placeholder="PassWord" aria-label="Username" aria-describedby="basic-addon1" formControlName="passWord">
+                    </div>
+                    <button type="submit" class="btn btn-success" [disabled]="!signIn.valid" (click)="userSignIn()">SignIn</button>
+
+                </form>
+                
+            </div>
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+                    <div *ngIf="profileForm.get('username')?.invalid && profileForm.get('username')?.touched" class="text-danger fade-in">
+                        Username is required.
+                      </div>
+                      <div *ngIf="usr" class="text-danger fade-in">
+                        Username is present.
+                      </div>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text"><i class="bi bi-person"></i></span>
+                      <input type="text" class="form-control" placeholder="Username" (change)="isUserpresent($event)" formControlName="username">
+                      
+                    </div>
+                  
+                    <div *ngIf="profileForm.get('email')?.invalid && profileForm.get('email')?.touched" class="text-danger fade-in">
+                        A valid email is required.
+                      </div>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text"><i class="bi bi-envelope-at"></i></span>
+                      <input type="email" class="form-control" placeholder="Email" formControlName="email">
+                      
+                    </div>
+                  
+                    <div *ngIf="profileForm.get('password')?.invalid && profileForm.get('password')?.touched" class="text-danger fade-in">
+                        Password is required (minimum 8 characters).
+                    </div>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                      <input type="password" class="form-control" placeholder="Password" formControlName="password">
+                      
+                    </div>
+                    
+                  
+                    <div *ngIf="profileForm.errors && (profileForm.get('password')?.touched || profileForm.get('confirmPassword')?.touched)" class="text-danger fade-in">
+                        Passwords do not match.
+                    </div>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                      <input type="password" class="form-control" placeholder="Confirm Password" formControlName="confirmPassword">
+                    </div>
+                    
+                  
+                    <button type="submit" class="btn btn-success" [disabled]="!profileForm.valid || usr" (click)="signUpUser()">SignUp</button>
+                  </form>
+                  
+            </div>
+          </div>
+    </div>
+  </div>
+</div>
+
+  <div *ngIf="homePage">
+        <app-header [user]="user"></app-header>
+        <app-home-page [data]="user"></app-home-page>
+  </div>

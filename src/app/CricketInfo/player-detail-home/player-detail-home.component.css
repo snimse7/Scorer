@@ -1,0 +1,44 @@
+.listOfMatches {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 25px;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.card {
+    flex-basis: calc(33.333% - 20px); 
+    margin-bottom: 20px; 
+}
+
+/* Media query for smaller screens */
+@media (max-width: 767px) {
+    .card {
+        flex-basis: calc(50% - 20px); /* Two cards per line on smaller screens */
+    }
+}
+
+/* Media query for even smaller screens */
+@media (max-width: 479px) {
+    .card {
+        flex-basis: 100%; /* One card per line on even smaller screens */
+    }
+}
+
+.items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 25px;
+  }
+
+  h2 {
+    border-bottom: 3px solid red;
+  }
+
+  /* Optional styles for better spacing */
+  body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+  }

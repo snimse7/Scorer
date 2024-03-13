@@ -1,0 +1,31 @@
+.card {
+    width: 78rem;
+    /* max-width: 500px; */
+    margin: 50px auto; /* Center horizontally and adjust top margin */
+    border-radius: 3px;
+    padding: 20px;
+
+    /* Responsive Styling */
+    @media screen and (max-width: 600px) {
+        max-width: 90%; /* Adjust the max-width for smaller screens */
+        margin: 30px auto; /* Adjust the margin for smaller screens */
+    }
+
+    @media screen and (max-width: 400px) {
+        max-width: 100%; /* Adjust the max-width for even smaller screens */
+        margin: 20px auto; /* Adjust the margin for even smaller screens */
+    }
+
+}
+
+
+.fade-in {
+    font-size: small;
+    animation: fadeIn ease 1s;
+  }
+  
+  @keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+  

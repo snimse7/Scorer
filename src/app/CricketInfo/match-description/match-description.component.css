@@ -1,0 +1,15 @@
+.scorecard{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.car{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px; /* Add padding to the card */
+  }
+  
+  .wicket-item {
+    flex: 0 0 calc(33.33% - 10px); /* Adjust the width as needed */
+    margin-right: 10px; /* Adjust the margin as needed */
+    margin-bottom: 10px; /* Add margin bottom to create space between rows */
+  }

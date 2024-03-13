@@ -1,0 +1,111 @@
+<br>
+<div class="scorecard">
+
+  <div>
+    <h5>{{data.matchHeader.matchDescription}}</h5>
+    <h5>{{data.status}}</h5>
+  </div>
+
+  <div class="accordion" id="accordionExample">
+    <div class="accordion-item" *ngFor="let match of data.scoreCard;let i=index">
+      <h2 class="accordion-header" id="{{'heading' + match.inningsId}}">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+          [attr.data-bs-target]="'#collapse' + match.inningsId" aria-expanded="true"
+          [attr.aria-controls]="'collapse' + match.inningsId">
+          {{match.batTeamDetails.batTeamName}}--{{match.scoreDetails.runs}}/{{match.scoreDetails.wickets}}-({{match.scoreDetails.overs}})
+        </button>
+      </h2>
+      <div [id]="'collapse' + match.inningsId" class="accordion-collapse collapse show"
+        [attr.aria-labelledby]="'heading' + match.inningsId" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+
+        
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Batter</th>
+                <th scope="col"></th>
+                <th scope="col">R</th>
+                <th scope="col">B</th>
+                <th scope="col">4s</th>
+                <th scope="col">6s</th>
+                <th scope="col">SR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr  *ngFor="let da of arr5[i]">
+                <td>{{da?.batName}}</td>
+                <td>{{da?.outDesc}}</td>
+                <td>{{da?.runs}}</td>
+                <td>{{da?.balls}}</td>
+                <td>{{da?.fours}}</td>
+                <td>{{da?.sixers}}</td>
+                <td>{{da?.strikeRate}}</td>
+
+              </tr>
+            </tbody>
+          </table>
+
+          <br>
+
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Bowler</th>
+                <th scope="col">O</th>
+                <th scope="col">M</th>
+                <th scope="col">R</th>
+                <th scope="col">W</th>
+                <th scope="col">NB</th>
+                <th scope="col">WD</th>
+                <th scope="col">ECO</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let datal of bowling4[i]">
+                <td>{{datal.bowlName}}</td>
+                <td>{{datal.overs}}</td>
+                <td>{{datal.maidens}}</td>
+                <td>{{datal.runs}}</td>
+                <td>{{datal.wickets}}</td>
+                <td>{{datal.no_balls}}</td>
+                <td>{{datal.wides}}</td>
+                <td>{{datal.economy}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="row">
+            <div class="col-sm-6">
+
+              <h3>Fall of wicket</h3>
+              <div class="car">
+                <p *ngFor="let wi of wicket5[i]" class="wicket-item">
+                  {{wi.wktRuns}}/{{wi.wktNbr}}({{wi.batName}},{{wi.wktOver}})
+                </p>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <h3>Extras</h3>
+              <table class="table">
+                  <tbody>
+                    <tr>
+                      <td>Total:-{{match.extrasData.total}}</td>
+                      <td>NoBalls:-{{match.extrasData.noBalls}}</td>
+                      <td>Byes:-{{match.extrasData.byes}}</td>
+                      <td>LegByes:-{{match.extrasData.legByes}}</td>
+                      <td>Penalty:-{{match.extrasData.penalty}}</td>
+
+                    </tr>
+                  </tbody>
+              </table>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
