@@ -18,6 +18,12 @@
 
 }
 .filter{
+
     display: flex;
     gap: 40px;
+}
+.ranks{
+    margin-left: 20px;
+    margin-right: 20px;
+    
 }

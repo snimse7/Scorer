@@ -20,14 +20,24 @@ import { RecentMatchesComponent } from './CricketInfo/recent-matches/recent-matc
 import { MatchDescriptionComponent } from './CricketInfo/match-description/match-description.component';
 import { PlayerDetailHomeComponent } from './CricketInfo/player-detail-home/player-detail-home.component';
 import { ActivatedRoute, RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
 // import { AppRoutingModule } from './app-routing.module';
 
+
 const routes: Routes = [
+  {path:'',redirectTo:'home', pathMatch:'full'},
   { path: 'playerById/:id', component: PlayersInfoComponent },
   { path: 'matchById', component: MatchDescriptionComponent },
   { path: 'playerInfo', component: PlayerDetailHomeComponent },
   { path: 'rankings', component: RankingsComponent },
   { path: 'recentMatches', component: RecentMatchesComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'cric-info', component: CricInfoHomeComponent },
+
+
+
 
 
 ];
@@ -45,14 +55,19 @@ const routes: Routes = [
     RecentMatchesComponent,
     MatchDescriptionComponent,
     PlayerDetailHomeComponent,
+    HomeComponent,
+    AboutComponent,
+
   ],
   imports: [
+    
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
     RouterModule,
-    [RouterModule.forRoot(routes)]
+    [RouterModule.forRoot(routes)],
+    
     
 
     

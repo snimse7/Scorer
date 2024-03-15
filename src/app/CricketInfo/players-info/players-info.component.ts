@@ -38,7 +38,7 @@ export class PlayersInfoComponent {
         }
       );
 
-      this._kingScorerService.getBattingInfoById(playerId).subscribe(
+      this._kingScorerService.getBowlingInfoById(playerId).subscribe(
         (data)=>{
           this.bowling=data;
           //alert(this.rankings[0].name);
